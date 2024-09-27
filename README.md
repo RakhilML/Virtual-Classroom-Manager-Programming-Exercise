@@ -9,12 +9,13 @@ The Virtual Classroom Manager is a terminal-based application designed for an Ed
 ## Features
 - **Classroom Management**: Add and list virtual classrooms.
 - **Student Management**: Enroll students into classrooms and list students within each classroom.
+- **Assignment Management**: Schedule assignments for classrooms and allow students to submit them.
 - **Logging and Input Validation**: Implemented logging mechanisms for actions and input validations to enhance reliability.
 
 ## Functional Requirements
-- Users can create classrooms using the command: add_classroom [class_name]
-- Users can enroll students using the command: add_student [student_id] [class_name]
-
+- Users can create classrooms using the command: `add_classroom [class_name]`
+- Users can enroll students using the command: `add_student [student_id] [class_name]`
+- Users can schedule assignments using the command: `schedule_assignment [class_name] [assignment_title] [due_date]`
 - Users can list all classrooms and enrolled students.
 
 ## Current State
