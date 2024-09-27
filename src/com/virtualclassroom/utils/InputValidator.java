@@ -10,5 +10,9 @@ public class InputValidator {
         return studentId != null && !studentId.trim().isEmpty();
     }
 
-    // Need to Add more validation methods as needed
+    public static boolean isValidStudentName(String studentName) {
+        return studentName != null && !studentName.trim().isEmpty();
+    }
+
+    // Add more validation methods as needed
 }
