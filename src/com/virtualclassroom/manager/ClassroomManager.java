@@ -14,9 +14,9 @@ public class ClassroomManager {
         if (!classrooms.containsKey(className)) {
             Classroom newClassroom = new Classroom(className);
             classrooms.put(className, newClassroom);
-            Logger.log("Classroom " + className + " has been created.");
+            Logger.logInfo("Classroom " + className + " has been created.");
         } else {
-            Logger.log("Classroom " + className + " already exists.");
+            Logger.logError("Classroom " + className + " already exists.");
         }
     }
 
@@ -24,11 +24,27 @@ public class ClassroomManager {
         if (classrooms.containsKey(className)) {
             Classroom classroom = classrooms.get(className);
             classroom.addStudent(studentId);
-            Logger.log("Student " + studentId + " has been enrolled in " + className + ".");
+            Logger.logInfo("Student " + studentId + " has been enrolled in " + className + ".");
         } else {
-            Logger.log("Classroom " + className + " does not exist.");
+            Logger.logError("Classroom " + className + " does not exist.");
         }
     }
 
-    // need to add more methods as needed for listing/removing classrooms and students
+    public void listClassrooms() {
+        if (classrooms.isEmpty()) {
+            Logger.logInfo("No classrooms available.");
+            return;
+        }
+        Logger.logInfo("Available Classrooms:");
+        classrooms.keySet().forEach(className -> Logger.logInfo("- " + className));
+    }
+
+    public void removeClassroom(String className) {
+        if (classrooms.containsKey(className)) {
+            classrooms.remove(className);
+            Logger.logInfo("Classroom " + className + " has been removed.");
+        } else {
+            Logger.logError("Classroom " + className + " does not exist.");
+        }
+    }
 }
