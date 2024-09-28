@@ -24,6 +24,10 @@ public class Assignment {
         return dueDate;
     }
 
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;  // Allow updating due date
+    }
+
     public String getSubmittedBy() {
         return submittedBy;
     }
