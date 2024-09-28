@@ -69,4 +69,21 @@ public class AssignmentManager {
             Logger.logInfo("- Class: " + className + " | Assignment: " + assignment.getAssignmentTitle() + " (Due: " + assignment.getDueDate() + ", Submitted by: " + assignment.getSubmittedBy() + ")");
         });
     }
+
+    // New method to update assignment details
+    public void updateAssignmentDueDate(String className, String assignmentTitle, String newDueDate) {
+        if (!InputValidator.isValidClassName(className) || !InputValidator.isValidAssignmentTitle(assignmentTitle) || !InputValidator.isValidDueDate(newDueDate)) {
+            Logger.logError("Invalid input for updating assignment due date.");
+            return;
+        }
+
+        String key = className + ":" + assignmentTitle;
+        if (assignments.containsKey(key)) {
+            Assignment assignment = assignments.get(key);
+            assignment.setDueDate(newDueDate);
+            Logger.logInfo("Assignment '" + assignmentTitle + "' for " + className + " has a new due date: " + newDueDate);
+        } else {
+            Logger.logError("Assignment '" + assignmentTitle + "' for " + className + " does not exist.");
+        }
+    }
 }

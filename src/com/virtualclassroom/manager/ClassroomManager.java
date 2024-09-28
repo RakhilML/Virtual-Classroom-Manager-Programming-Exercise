@@ -1,6 +1,7 @@
 package com.virtualclassroom.manager;
 
 import com.virtualclassroom.models.Classroom;
+import com.virtualclassroom.models.Student;
 import com.virtualclassroom.utils.InputValidator;
 import com.virtualclassroom.utils.Logger;
 
@@ -10,6 +11,7 @@ import java.util.Map;
 public class ClassroomManager {
 
     private Map<String, Classroom> classrooms = new HashMap<>();
+    private Map<String, Student> students = new HashMap<>();
 
     public void addClassroom(String className) {
         // Validate class name
@@ -36,7 +38,19 @@ public class ClassroomManager {
 
         if (classrooms.containsKey(className)) {
             Classroom classroom = classrooms.get(className);
+
+            // Create a student if not already in the system
+            if (!students.containsKey(studentId)) {
+                System.out.println("Enter student name:");
+                String studentName = InputValidator.getUserInput();  // Prompt for name
+                Student newStudent = new Student(studentId, studentName);
+                students.put(studentId, newStudent);
+            }
+
+            Student student = students.get(studentId);
             classroom.addStudent(studentId);
+            student.enrollInClassroom(classroom);
+
             Logger.logInfo("Student " + studentId + " has been enrolled in " + className + ".");
         } else {
             Logger.logError("Classroom " + className + " does not exist.");
@@ -62,6 +76,21 @@ public class ClassroomManager {
         if (classrooms.containsKey(className)) {
             classrooms.remove(className);
             Logger.logInfo("Classroom " + className + " has been removed.");
+        } else {
+            Logger.logError("Classroom " + className + " does not exist.");
+        }
+    }
+
+    public void listStudentsInClass(String className) {
+        if (!InputValidator.isValidClassName(className)) {
+            Logger.logError("Invalid class name.");
+            return;
+        }
+
+        if (classrooms.containsKey(className)) {
+            Classroom classroom = classrooms.get(className);
+            Logger.logInfo("Students enrolled in " + className + ":");
+            classroom.getStudents().forEach(studentId -> Logger.logInfo("- " + studentId));
         } else {
             Logger.logError("Classroom " + className + " does not exist.");
         }
