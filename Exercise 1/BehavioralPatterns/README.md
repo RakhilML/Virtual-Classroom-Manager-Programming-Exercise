@@ -88,7 +88,7 @@ User 2 received document update: Second draft of the document.
 3. The command is executed, and the light is turned on or off accordingly.
 
 ### **Main Class to Run**
-Run the <code>Main.java</command> in the <code>command</code> package to test the AI-driven smart home system.
+Run the <code>Main.java</code> in the <code>command</code> package to test the AI-driven smart home system.
 
 ### **Example Output**
 ```
