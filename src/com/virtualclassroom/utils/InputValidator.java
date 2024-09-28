@@ -1,6 +1,10 @@
 package com.virtualclassroom.utils;
 
+import java.util.Scanner;
+
 public class InputValidator {
+
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static boolean isValidClassName(String className) {
         return className != null && !className.trim().isEmpty();
@@ -23,5 +27,8 @@ public class InputValidator {
         return dueDate != null && !dueDate.trim().isEmpty();
     }
 
-    // Add more validation methods as needed
+    // New method to prompt user for input
+    public static String getUserInput() {
+        return scanner.nextLine();
+    }
 }
