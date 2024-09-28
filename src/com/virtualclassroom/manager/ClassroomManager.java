@@ -1,6 +1,7 @@
 package com.virtualclassroom.manager;
 
 import com.virtualclassroom.models.Classroom;
+import com.virtualclassroom.utils.InputValidator;
 import com.virtualclassroom.utils.Logger;
 
 import java.util.HashMap;
@@ -11,6 +12,12 @@ public class ClassroomManager {
     private Map<String, Classroom> classrooms = new HashMap<>();
 
     public void addClassroom(String className) {
+        // Validate class name
+        if (!InputValidator.isValidClassName(className)) {
+            Logger.logError("Invalid class name.");
+            return;
+        }
+
         if (!classrooms.containsKey(className)) {
             Classroom newClassroom = new Classroom(className);
             classrooms.put(className, newClassroom);
@@ -21,6 +28,12 @@ public class ClassroomManager {
     }
 
     public void addStudentToClass(String studentId, String className) {
+        // Validate inputs
+        if (!InputValidator.isValidStudentId(studentId) || !InputValidator.isValidClassName(className)) {
+            Logger.logError("Invalid input for adding student.");
+            return;
+        }
+
         if (classrooms.containsKey(className)) {
             Classroom classroom = classrooms.get(className);
             classroom.addStudent(studentId);
@@ -40,6 +53,12 @@ public class ClassroomManager {
     }
 
     public void removeClassroom(String className) {
+        // Validate class name
+        if (!InputValidator.isValidClassName(className)) {
+            Logger.logError("Invalid class name.");
+            return;
+        }
+
         if (classrooms.containsKey(className)) {
             classrooms.remove(className);
             Logger.logInfo("Classroom " + className + " has been removed.");
