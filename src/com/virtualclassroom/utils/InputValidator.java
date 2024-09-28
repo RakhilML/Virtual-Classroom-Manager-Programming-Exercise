@@ -14,5 +14,14 @@ public class InputValidator {
         return studentName != null && !studentName.trim().isEmpty();
     }
 
+    public static boolean isValidAssignmentTitle(String assignmentTitle) {
+        return assignmentTitle != null && !assignmentTitle.trim().isEmpty();
+    }
+
+    public static boolean isValidDueDate(String dueDate) {
+        // Simple validation: dueDate should not be empty
+        return dueDate != null && !dueDate.trim().isEmpty();
+    }
+
     // Add more validation methods as needed
 }
