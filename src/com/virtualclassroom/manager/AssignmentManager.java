@@ -86,4 +86,41 @@ public class AssignmentManager {
             Logger.logError("Assignment '" + assignmentTitle + "' for " + className + " does not exist.");
         }
     }
+    public void assignGrade(String studentId, String className, String assignmentTitle, String grade) {
+        if (!InputValidator.isValidStudentId(studentId) || !InputValidator.isValidClassName(className) || !InputValidator.isValidAssignmentTitle(assignmentTitle) || !InputValidator.isValidGrade(grade)) {
+            Logger.logError("Invalid input for assigning grade.");
+            return;
+        }
+
+        String key = className + ":" + assignmentTitle;
+        if (assignments.containsKey(key)) {
+            Assignment assignment = assignments.get(key);
+            assignment.assignGrade(studentId, grade);
+            Logger.logInfo("Grade '" + grade + "' has been assigned to Student " + studentId + " for assignment '" + assignmentTitle + "' in " + className + ".");
+        } else {
+            Logger.logError("Assignment '" + assignmentTitle + "' for " + className + " does not exist.");
+        }
+    }
+
+    // New method to view the grade for a student's assignment
+    public void viewGrade(String studentId, String className, String assignmentTitle) {
+        if (!InputValidator.isValidStudentId(studentId) || !InputValidator.isValidClassName(className) || !InputValidator.isValidAssignmentTitle(assignmentTitle)) {
+            Logger.logError("Invalid input for viewing grade.");
+            return;
+        }
+
+        String key = className + ":" + assignmentTitle;
+        if (assignments.containsKey(key)) {
+            Assignment assignment = assignments.get(key);
+            String grade = assignment.getGrade(studentId);
+            if (grade != null) {
+                Logger.logInfo("Student " + studentId + " received grade '" + grade + "' for assignment '" + assignmentTitle + "' in " + className + ".");
+            } else {
+                Logger.logError("Grade not assigned for Student " + studentId + " in " + assignmentTitle + ".");
+            }
+        } else {
+            Logger.logError("Assignment '" + assignmentTitle + "' for " + className + " does not exist.");
+        }
+    }
+
 }

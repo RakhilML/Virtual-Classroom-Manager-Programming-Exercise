@@ -12,6 +12,7 @@ public class ClassroomManager {
 
     private Map<String, Classroom> classrooms = new HashMap<>();
     private Map<String, Student> students = new HashMap<>();
+    private Map<String, Map<String, Boolean>> attendanceRecords = new HashMap<>();
 
     public void addClassroom(String className) {
         // Validate class name
@@ -94,5 +95,44 @@ public class ClassroomManager {
         } else {
             Logger.logError("Classroom " + className + " does not exist.");
         }
+    }
+    public void markAttendance(String studentId, String className, boolean isPresent) {
+        if (!InputValidator.isValidStudentId(studentId) || !InputValidator.isValidClassName(className)) {
+            Logger.logError("Invalid input for marking attendance.");
+            return;
+        }
+
+        if (!classrooms.containsKey(className)) {
+            Logger.logError("Classroom " + className + " does not exist.");
+            return;
+        }
+
+        // Record attendance
+        if (!attendanceRecords.containsKey(className)) {
+            attendanceRecords.put(className, new HashMap<>());
+        }
+
+        attendanceRecords.get(className).put(studentId, isPresent);
+        String attendanceStatus = isPresent ? "present" : "absent";
+        Logger.logInfo("Student " + studentId + " marked as " + attendanceStatus + " in " + className + ".");
+    }
+
+    // New method to view attendance for a specific class
+    public void viewAttendance(String className) {
+        if (!InputValidator.isValidClassName(className)) {
+            Logger.logError("Invalid class name.");
+            return;
+        }
+
+        if (!attendanceRecords.containsKey(className)) {
+            Logger.logInfo("No attendance records found for " + className + ".");
+            return;
+        }
+
+        Logger.logInfo("Attendance for " + className + ":");
+        attendanceRecords.get(className).forEach((studentId, isPresent) -> {
+            String status = isPresent ? "Present" : "Absent";
+            Logger.logInfo("- Student " + studentId + ": " + status);
+        });
     }
 }
