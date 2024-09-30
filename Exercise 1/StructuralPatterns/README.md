@@ -55,8 +55,8 @@ java StructuralPatterns.adapter.Main
 ### **Sample output**
 
 ```plaintext
-External course started: Mathematics for Beginners
-Playing external course content...
+Starting the external course: Mathematics for Beginners
+Playing content for the external course: Mathematics for Beginners
 ```
 
 ---
