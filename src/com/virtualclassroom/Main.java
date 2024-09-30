@@ -11,8 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ClassroomManager classroomManager = new ClassroomManager();
-        AssignmentManager assignmentManager = new AssignmentManager();
+        ClassroomManager classroomManager = ClassroomManager.getInstance(); // Singleton pattern
+        AssignmentManager assignmentManager = AssignmentManager.getInstance(); // Singleton pattern
 
         System.out.println("Welcome to the Virtual Classroom Manager!");
 
@@ -92,7 +92,7 @@ public class Main {
             String className = parts[1];
             String assignmentTitle = parts[2];
             String dueDate = parts[3];
-            assignmentManager.scheduleAssignment(className, assignmentTitle, dueDate);
+            assignmentManager.scheduleAssignment(className, assignmentTitle, dueDate);  // Uses AssignmentFactory internally
             Logger.logInfo("Scheduled assignment for classroom: " + className + " with title: " + assignmentTitle + " (Due: " + dueDate + ")");
         } else {
             System.out.println("Invalid command. Usage: schedule_assignment <class_name> <assignment_title> <due_date>");

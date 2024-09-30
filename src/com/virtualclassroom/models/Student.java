@@ -32,7 +32,6 @@ public class Student {
         }
     }
 
-    // Added method to get all classrooms for display purposes
     public void displayEnrolledClassrooms() {
         if (enrolledClassrooms.isEmpty()) {
             System.out.println("No enrolled classrooms.");

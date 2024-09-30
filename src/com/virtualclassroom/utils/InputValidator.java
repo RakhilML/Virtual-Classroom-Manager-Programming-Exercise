@@ -7,10 +7,8 @@ public class InputValidator {
 
     private static final Scanner scanner = new Scanner(System.in);
     
-    // Regular expression for valid classroom names: alphanumeric and underscores only
     private static final Pattern CLASS_NAME_PATTERN = Pattern.compile("^[a-zA-Z0-9_]+$");
 
-    // Classroom name validation
     public static boolean isValidClassName(String className) {
         return className != null && CLASS_NAME_PATTERN.matcher(className).matches();
     }
@@ -28,17 +26,14 @@ public class InputValidator {
     }
 
     public static boolean isValidDueDate(String dueDate) {
-        // Simple validation: dueDate should not be empty (further validation can be added)
         return dueDate != null && !dueDate.trim().isEmpty();
     }
 
-    // Prompt user for input
     public static String getUserInput() {
         return scanner.nextLine();
     }
 
     public static boolean isValidGrade(String grade) {
-        // Grade validation: only allows grades A-F (case insensitive)
         return grade != null && grade.matches("[A-Fa-f]");
     }
 }

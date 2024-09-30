@@ -10,9 +10,20 @@ import java.util.Map;
 
 public class ClassroomManager {
 
+    private static ClassroomManager instance; 
+
     private Map<String, Classroom> classrooms = new HashMap<>();
     private Map<String, Student> students = new HashMap<>();
     private Map<String, Map<String, Boolean>> attendanceRecords = new HashMap<>();
+
+    private ClassroomManager() {}
+
+    public static ClassroomManager getInstance() {
+        if (instance == null) {
+            instance = new ClassroomManager();
+        }
+        return instance;
+    }
 
     public void addClassroom(String className) {
         // Validate class name
@@ -113,26 +124,24 @@ public class ClassroomManager {
         }
 
         attendanceRecords.get(className).put(studentId, isPresent);
-        String attendanceStatus = isPresent ? "present" : "absent";
-        Logger.logInfo("Student " + studentId + " marked as " + attendanceStatus + " in " + className + ".");
+        Logger.logInfo("Attendance marked for student: " + studentId + " in classroom: " + className + " - Present: " + isPresent);
     }
 
-    // New method to view attendance for a specific class
-    public void viewAttendance(String className) {
+    public void listAttendance(String className) {
         if (!InputValidator.isValidClassName(className)) {
             Logger.logError("Invalid class name.");
             return;
         }
 
         if (!attendanceRecords.containsKey(className)) {
-            Logger.logInfo("No attendance records found for " + className + ".");
+            Logger.logError("No attendance records for " + className);
             return;
         }
 
         Logger.logInfo("Attendance for " + className + ":");
         attendanceRecords.get(className).forEach((studentId, isPresent) -> {
-            String status = isPresent ? "Present" : "Absent";
-            Logger.logInfo("- Student " + studentId + ": " + status);
+            String attendanceStatus = isPresent ? "Present" : "Absent";
+            Logger.logInfo("- " + studentId + ": " + attendanceStatus);
         });
     }
 }

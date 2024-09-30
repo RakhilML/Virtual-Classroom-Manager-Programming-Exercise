@@ -40,3 +40,17 @@
 2024-09-29T20:57:58.718930900 [INFO] Assignment 'Math' for Class_1 has a new due date: "2024-10-15"
 2024-09-29T20:57:58.719986900 [INFO] Updated due date for assignment: Math in class: Class_1
 2024-09-29T20:58:03.761381100 [INFO] Exited the Virtual Classroom Manager.
+2024-10-01T02:28:26.853182500 [INFO] Classroom freshers has been created.
+2024-10-01T02:28:26.864195400 [INFO] Added classroom: freshers
+2024-10-01T02:29:04.682163800 [INFO] Student 21048 has been enrolled in freshers.
+2024-10-01T02:29:04.683188 [INFO] Added student: 21048 to classroom: freshers
+2024-10-01T02:29:16.117048600 [INFO] Student 21049 has been enrolled in freshers.
+2024-10-01T02:29:16.117048600 [INFO] Added student: 21049 to classroom: freshers
+2024-10-01T02:30:02.599431800 [INFO] Creating assignment: introduction with due date: 02-08-2024
+2024-10-01T02:30:02.601796400 [INFO] Scheduled assignment: introduction for classroom: freshers (Due: 02-08-2024)
+2024-10-01T02:30:02.601796400 [INFO] Scheduled assignment for classroom: freshers with title: introduction (Due: 02-08-2024)
+2024-10-01T02:30:40.222169500 [INFO] Assignment: introduction submitted by student: 21048 for class: freshers
+2024-10-01T02:30:40.223172100 [INFO] Submitted assignment: introduction by student: 21048 for class: freshers
+2024-10-01T02:30:53.457443200 [INFO] Assignments for freshers:
+2024-10-01T02:30:53.460480400 [INFO] - introduction (Due: 02-08-2024)
+2024-10-01T02:31:00.504826600 [INFO] Exited the Virtual Classroom Manager.
