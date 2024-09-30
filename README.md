@@ -1,3 +1,5 @@
+# Please find the DesignPatterns implemented with use cases in the Folder 'Exercise 1'
+## Exercise 2 is as follows
 # Virtual-Classroom-Manager-Programming-Exercise
 The task is to create a terminal-based Virtual Classroom Manager that handles class scheduling, student attendance, and assignment submissions.
 
