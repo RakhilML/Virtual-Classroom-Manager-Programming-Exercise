@@ -1,0 +1,113 @@
+[INFO] Classroom ENG48 has been created.
+[INFO] Added classroom: ENG48
+[INFO] Student S1 has been enrolled in ENG48.
+[INFO] Added student: S1 to classroom: ENG48
+[INFO] Student S2 has been enrolled in ENG48.
+[INFO] Added student: S2 to classroom: ENG48
+[INFO] Student S3 has been enrolled in ENG48.
+[INFO] Added student: S3 to classroom: ENG48
+[INFO] Classroom MED48 has been created.
+[INFO] Added classroom: MED48
+[INFO] Available Classrooms:
+[INFO] - ENG48
+[INFO] - MED48
+[INFO] Listed all classrooms.
+[INFO] Creating assignment: physics with due date: 2024-08-02
+[INFO] Assignment for class for classroom: ENG48 has been scheduled(Due: 2024-08-02)
+[INFO] Scheduled assignment for classroom: ENG48 with title: physics (Due: 2024-08-02)
+[INFO] Assignment: physics submitted by student: S2 for class: ENG48
+[INFO] Assignment: physics submitted by S2 in class: ENG48
+[INFO] Assignments for ENG48:
+[INFO] - physics (Due: 2024-08-02)
+[INFO] Listed assignments for class: ENG48
+[INFO] Students enrolled in ENG48:
+[INFO] - ENG48 (S1)
+[INFO] - ENG48 (S2)
+[INFO] - ENG48 (S3)
+[INFO] Listed students in class: ENG48
+[ERROR] Classroom S2 does not exist.
+[INFO] Attendance marked for student: S2 in classroom: ENG48
+[ERROR] Classroom S3 does not exist.
+[INFO] Attendance marked for student: S3 in classroom: ENG48
+[ERROR] No attendance records for ENG48
+[INFO] Listed attendance for class: ENG48
+[ERROR] No attendance records for ENG48
+[INFO] Listed attendance for class: ENG48
+[ERROR] No attendance records for MED48
+[INFO] Listed attendance for class: MED48
+[INFO] Displayed enrolled classrooms for student: S1
+[INFO] Classroom pp has been created.
+[INFO] Added classroom: pp
+[INFO] Classroom MAT21 has been created.
+[INFO] Added classroom: MAT21
+[INFO] Classroom MAT22 has been created.
+[INFO] Added classroom: MAT22
+[INFO] Classroom MAT23 has been created.
+[INFO] Added classroom: MAT23
+[INFO] Available Classrooms:
+[INFO] - pp
+[INFO] - MAT21
+[INFO] - MAT23
+[INFO] - MAT22
+[INFO] Listed all classrooms.
+[INFO] Classroom pp has been removed.
+[INFO] Removed classroom: pp
+[INFO] Available Classrooms:
+[INFO] - MAT21
+[INFO] - MAT23
+[INFO] - MAT22
+[INFO] Listed all classrooms.
+[INFO] Exited the Virtual Classroom Manager.
+[INFO] Classroom BatchA has been created.
+[INFO] Added classroom: BatchA
+[INFO] Classroom BatchB has been created.
+[INFO] Added classroom: BatchB
+[INFO] Classroom BatchC has been created.
+[INFO] Added classroom: BatchC
+[INFO] Student S1 has been enrolled in BatchA.
+[INFO] Added student: S1 to classroom: BatchA
+[INFO] Student S1 has been enrolled in BatchB.
+[INFO] Added student: S1 to classroom: BatchB
+[INFO] Student S2 has been enrolled in BatchB.
+[INFO] Added student: S2 to classroom: BatchB
+[INFO] Student S2 has been enrolled in BatchC.
+[INFO] Added student: S2 to classroom: BatchC
+[INFO] Student S3 has been enrolled in BatchC.
+[INFO] Added student: S3 to classroom: BatchC
+[INFO] Student S3 has been enrolled in BatchA.
+[INFO] Added student: S3 to classroom: BatchA
+[INFO] Available Classrooms:
+[INFO] - BatchB
+[INFO] - BatchC
+[INFO] - BatchA
+[INFO] Listed all classrooms.
+[INFO] Creating assignment: designpatterns with due date: 2024-08-02
+[INFO] Scheduled assignment for classroom: BatchA with title: designpatterns (Due: 2024-08-02)
+[INFO] Creating assignment: OOP with due date: 2024-08-02
+[INFO] Scheduled assignment for classroom: BatchB with title: OOP (Due: 2024-08-02)
+[INFO] Assignment: designpatterns submitted by student: S1 in class: BatchA
+[ERROR] Assignment: OOP does not exist in classroom: BatchA
+[INFO] Assignment: OOP submitted by student: S2 in class: BatchB
+[INFO] Assignments for BatchA:
+[INFO] - designpatterns (Due: 2024-08-02)
+[INFO] Listed assignments for class: BatchA
+[INFO] Assignments for BatchB:
+[INFO] - OOP (Due: 2024-08-02)
+[INFO] Listed assignments for class: BatchB
+[INFO] Students enrolled in BatchA:
+[INFO] - BatchA (S1)
+[INFO] - BatchC (S3)
+[INFO] Listed students in class: BatchA
+[INFO] Students enrolled in BatchB:
+[INFO] - BatchA (S1)
+[INFO] - BatchB (S2)
+[INFO] Listed students in class: BatchB
+[ERROR] Classroom S1 does not exist.
+[INFO] Attendance marked for student: S1 in classroom: BatchA
+[INFO] Attendance marked for student: S1 in classroom: BatchA - Present: true
+[INFO] Attendance marked for student: BatchA in classroom: S1
+[ERROR] Assignment designpatterns does not exist in BatchA
+[INFO] Assigned grade A to student: S1 in classroom: BatchA for assignment: designpatterns
+[ERROR] Assignment OOP does not exist in BatchB
+[INFO] Assigned grade B to student: S1 in classroom: BatchB for assignment: OOP
+[INFO] Exited the Virtual Classroom Manager.
