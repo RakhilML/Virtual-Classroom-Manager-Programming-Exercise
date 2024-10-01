@@ -71,7 +71,7 @@ VirtualClassroomManager/
 ### Steps:
 1. Clone the repository or download the project files to your machine.
 ```bash
-git clone https://github.com/RakhilML/Virtual-Classroom-Manager-Programming-Exercise/tree/main
+git clone https://github.com/RakhilML/Virtual-Classroom-Manager-Programming-Exercise
 cd VirtualClassroomManager
 javac -d bin src/com/virtualclassroom/*.java
 java -cp bin com.virtualclassroom.Main
