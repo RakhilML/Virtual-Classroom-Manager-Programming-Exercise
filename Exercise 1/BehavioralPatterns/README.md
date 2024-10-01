@@ -11,7 +11,7 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 
 ## **Overview**
 
-This project demonstrates two behavioral design patterns — **Observer** and **Command** — in Java. Each pattern is implemented in a real-world scenario to provide a deeper understanding of how these patterns can be applied effectively.
+This project demonstrates two behavioral design patterns — **Observer** and **Command** — in Java. Each pattern is implemented using a use case to provide an understanding of how these patterns can be applied.
 
 ### **Project Structure**
 The project is structured as follows:
@@ -34,9 +34,9 @@ The project is structured as follows:
         Main.java          // Test for Command Pattern
 ```
 
-* The Observer pattern demonstrates a real-time collaborative document editing system where multiple users (observers) are notified of changes to the document (subject).
+* The Observer pattern shows an example of a document that is being edited in real time where several users (observers) are informed of changes made by others to the document (subject).
 
-* The Command pattern demonstrates an AI-driven smart home automation system where commands for turning on and off lights are issued based on AI-driven predictions.
+* The Command pattern is an AI-based smart home automation system in which commands regarding the switching on and off of the lights are given through AI recommendations.
 
 # **Patterns Implemented**
 
@@ -44,7 +44,7 @@ The project is structured as follows:
 
 Use Case: Real-Time Collaborative Document Editing
 
-* Scenario: Multiple users are editing the same document simultaneously. When one user makes changes, all other users are notified of the update.
+* Scenario: Users are collaborating in that they are all working on the given document at the same time. Whenever one user makes changes, all the other users are informed of the change that has been made.
 * Key Classes:
     * Observer Interface: Defines the update method to be implemented by classes that need to be notified of changes.
     * UserObserver Class: Implements the Observer interface and reacts to document updates.
