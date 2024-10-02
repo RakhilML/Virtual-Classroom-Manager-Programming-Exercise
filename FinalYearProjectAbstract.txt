@@ -1,0 +1,8 @@
+Phenotyping of flowers is very essential in botany as well as in the field of agriculture especially in plant breeding and production. Most conventional 
+approaches tend to be slow and highly dependent on manual work hence likely to have a lot of inconsistencies. To overcome these challenges, the advanced 
+neural networks is employed with an aim of providing a automated solution. This framework includes developing and pre-processing the dataset, training 
+deep learning model, and making estimations in real time reports on flower phenology. Thus, it allows for the improvement of these processes by automating 
+them with the help of this proposed solution of phenotyping for increased efficiency and accuracy in the assessment of plant health. This approach has 
+the potential of being incorporated with the use of robotic systems for crop management, improving efficiency of agricultural management as an 
+organisational goal. The subsequent development of this system could open possibilities for direct control and monitoring of operations in agriculture and 
+lead to crop management and yield.
