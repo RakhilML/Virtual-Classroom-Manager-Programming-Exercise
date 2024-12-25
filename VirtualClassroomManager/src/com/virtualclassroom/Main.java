@@ -11,11 +11,12 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ClassroomManager classroomManager = ClassroomManager.getInstance(); // Singleton pattern
-        AssignmentManager assignmentManager = AssignmentManager.getInstance(); // Singleton pattern
+        ClassroomManager classroomManager = ClassroomManager.getInstance(); 
+        AssignmentManager assignmentManager = AssignmentManager.getInstance(); 
 
         System.out.println("Welcome to the Virtual Classroom Manager!");
         printAvailableCommands();
+        String userRole = getUserRole(scanner); 
 
         while (true) {
             System.out.println("\nPlease enter your command:");
@@ -23,61 +24,101 @@ public class Main {
             String[] parts = input.split(" ");
 
             try {
+                // Handle command based on user role
                 switch (parts[0].toLowerCase()) {
-                    case "add_classroom":
-                        handleAddClassroom(parts, classroomManager);
+                    case "1":
+                        if (userRole.equals("teacher")) {
+                            handleAddClassroom(parts, classroomManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "remove_classroom":
-                        handleRemoveClassroom(parts, classroomManager);
+                    case "2":
+                        if (userRole.equals("teacher")) {
+                            handleRemoveClassroom(parts, classroomManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "add_student":
-                        handleAddStudent(parts, classroomManager);
+                    case "3":
+                        if (userRole.equals("teacher")) {
+                            handleAddStudent(parts, classroomManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "listclassrooms":
-                        handleListClassrooms(classroomManager);
+                    case "4":
+                        if (userRole.equals("teacher")) {
+                            handleListClassrooms(classroomManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "schedule_assignment":
-                        handleScheduleAssignment(parts, assignmentManager);
+                    case "5":
+                        if (userRole.equals("teacher")) {
+                            handleScheduleAssignment(parts, assignmentManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "submit_assignment":
-                        handleSubmitAssignment(parts, assignmentManager);
+                    case "6":
+                        if (userRole.equals("student")) {
+                            handleSubmitAssignment(parts, assignmentManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "list_assignments":
+                    case "7":
                         handleListAssignments(parts, assignmentManager);
                         break;
 
-                    case "liststudentsinclass":
-                        handleListStudentsInClass(parts, classroomManager);
+                    case "8":
+                        if (userRole.equals("teacher")) {
+                            handleListStudentsInClass(parts, classroomManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "markattendance":
-                        handleMarkAttendance(parts, classroomManager);
+                    case "9":
+                        if (userRole.equals("teacher")) {
+                            handleMarkAttendance(parts, classroomManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "listattendance":
+                    case "10":
                         handleListAttendance(parts, classroomManager);
                         break;
 
-                    case "removestudent":
-                        handleRemoveStudent(parts, classroomManager);
+                    case "11":
+                        if (userRole.equals("teacher")) {
+                            handleRemoveStudent(parts, classroomManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
-                    case "displayenrolledclassrooms":
+                    case "12":
                         handleDisplayEnrolledClassrooms(parts, classroomManager);
                         break;
 
-                    case "assigngrade":
-                        handleAssignGrade(parts, classroomManager);
+                    case "13":
+                        if (userRole.equals("teacher")) {
+                            handleAssignGrade(parts, classroomManager);
+                        } else {
+                            handleUnauthorizedCommand();
+                        }
                         break;
 
                     case "exit":
-                        //System.out.println("Exiting Virtual Classroom Manager. Goodbye!");
                         Logger.logInfo("Exited the Virtual Classroom Manager.");
                         scanner.close();
                         return;
@@ -92,36 +133,65 @@ public class Main {
                 }
             } catch (Exception e) {
                 Logger.logError("An error occurred: " + e.getMessage());
-                //System.out.println("An error occurred. Please try again.");
             }
+
+            // Clear terminal and print available commands
+            try {
+                Thread.sleep(2000); // 1000 milliseconds = 1 second
+            } catch (InterruptedException e) {
+                Logger.logError("Sleep interrupted: " + e.getMessage());
+                Thread.currentThread().interrupt(); // Restore the interrupted status
+            }
+
+            clearTerminal();
+            printAvailableCommands();
         }
+    }
+
+    private static String getUserRole(Scanner scanner) {
+        System.out.println("Enter your role (teacher/student):");
+        return scanner.nextLine().trim().toLowerCase();
+    }
+
+    private static void handleUnauthorizedCommand() {
+        System.out.println("You do not have permission to execute this command.");
     }
 
     private static void printAvailableCommands() {
         System.out.println("Available Commands:");
-        System.out.println("1. add_classroom <class_name>");
-        System.out.println("2. remove_classroom <class_name>");
-        System.out.println("3. add_student <student_id> <class_name>");
-        System.out.println("4. listclassrooms");
-        System.out.println("5. schedule_assignment <class_name> <assignment_title> <due_date>");
-        System.out.println("6. submit_assignment <student_id> <class_name> <assignment_title>");
-        System.out.println("7. list_assignments [class_name]");
-        System.out.println("8. liststudentsinclass <class_name>");
-        System.out.println("9. markattendance <student_id> <class_name>");
-        System.out.println("10. listattendance <class_name>");
-        System.out.println("11. removestudent <student_id> <class_name>");
-        System.out.println("12. displayenrolledclassrooms <student_id>");
-        System.out.println("13. assigngrade <student_id> <class_name> <grade> <assignment_title>");
+        System.out.println("Teacher Commands:");
+        System.out.println("1. add_classroom [ 1 <class_name> ]");
+        System.out.println("2. remove_classroom [ 2 <class_name> ]");
+        System.out.println("3. add_student [ 3 <student_id> <class_name> ]");
+        System.out.println("4. listclassrooms [ 4 ]");
+        System.out.println("5. schedule_assignment [ 5 <class_name> <assignment_title> <due_date> ]");
+        System.out.println("8. liststudentsinclass [ 8 <class_name> ]");
+        System.out.println("9. markattendance [ 9 <student_id> <class_name> ]");
+        System.out.println("11. removestudent [ 11 <student_id> <class_name> ]");
+        System.out.println("13. assigngrade [ 13 <student_id> <class_name> <grade> <assignment_title> ]");
+
+        System.out.println("\nStudent Commands:");
+        System.out.println("6. submit_assignment [ 6 <student_id> <class_name> <assignment_title> ]");
+        System.out.println("7. list_assignments [ 7 <class_name> ]");
+        System.out.println("10. listattendance [ 10 <class_name> ]");
+        System.out.println("12. displayenrolledclassrooms [ 12 <student_id> ]");
+
+        System.out.println("\nOther Commands:");
         System.out.println("14. help - List all available commands.");
         System.out.println("15. exit - Exit the Virtual Classroom Manager.");
     }
 
+    private static void clearTerminal() {
+        // Print several newlines to simulate clearing the terminal
+        System.out.print("\033[H\033[2J");
+        System.out.flush(); // Forces console to flush output
+    }
+
+    // Handle methods (unchanged)
     private static void handleAddClassroom(String[] parts, ClassroomManager classroomManager) {
         if (parts.length == 2 && InputValidator.isValidClassName(parts[1])) {
             String className = parts[1];
             classroomManager.addClassroom(className);
-            Logger.logInfo("Added classroom: " + className);
-            // System.out.println("Classroom " + className + " has been created.");
         } else {
             System.out.println("Invalid command. Usage: add_classroom <class_name>");
         }
@@ -131,8 +201,6 @@ public class Main {
         if (parts.length == 2 && InputValidator.isValidClassName(parts[1])) {
             String className = parts[1];
             classroomManager.removeClassroom(className);
-            Logger.logInfo("Removed classroom: " + className);
-            // System.out.println("Classroom " + className + " has been successfully removed.");
         } else {
             System.out.println("Invalid command. Usage: remove_classroom <class_name>");
         }
@@ -143,13 +211,10 @@ public class Main {
             String studentId = parts[1];
             String className = parts[2];
             classroomManager.addStudentToClass(studentId, className);
-            Logger.logInfo("Added student: " + studentId + " to classroom: " + className);
-            // System.out.println("Student " + studentId + " has been enrolled in " + className);
         } else {
             System.out.println("Invalid command. Usage: add_student <student_id> <class_name>");
         }
     }
-        
 
     private static void handleListClassrooms(ClassroomManager classroomManager) {
         classroomManager.listClassrooms();
@@ -164,8 +229,6 @@ public class Main {
             String assignmentTitle = parts[2];
             String dueDate = parts[3];
             assignmentManager.scheduleAssignment(className, assignmentTitle, dueDate);
-            Logger.logInfo("Scheduled assignment for classroom: " + className + " with title: " + assignmentTitle + " (Due: " + dueDate + ")");
-            //System.out.println("Assignment " + assignmentTitle + " for " + className + " has been scheduled with due date " + dueDate);
         } else {
             System.out.println("Invalid command. Usage: schedule_assignment <class_name> <assignment_title> <due_date>");
         }
@@ -179,8 +242,6 @@ public class Main {
             String className = parts[2];
             String assignmentTitle = parts[3];
             assignmentManager.submitAssignment(studentId, className, assignmentTitle);
-            //Logger.logInfo("Assignment: " + assignmentTitle + " submitted by " + studentId + " in class: " + className);
-            //System.out.println("Assignment " + assignmentTitle + " submitted by " + studentId + " in class " + className);
         } else {
             System.out.println("Invalid command. Usage: submit_assignment <student_id> <class_name> <assignment_title>");
         }
@@ -190,7 +251,6 @@ public class Main {
         if (parts.length == 2 && InputValidator.isValidClassName(parts[1])) {
             String className = parts[1];
             assignmentManager.listAssignments(className);
-            Logger.logInfo("Listed assignments for class: " + className);
         } else {
             System.out.println("Invalid command. Usage: list_assignments <class_name>");
         }
@@ -200,7 +260,6 @@ public class Main {
         if (parts.length == 2 && InputValidator.isValidClassName(parts[1])) {
             String className = parts[1];
             classroomManager.listStudentsInClass(className);
-            Logger.logInfo("Listed students in class: " + className);
         } else {
             System.out.println("Invalid command. Usage: liststudentsinclass <class_name>");
         }
@@ -213,7 +272,7 @@ public class Main {
             String studentId = parts[2];
             boolean isPresent = true;
             classroomManager.markAttendance(className, studentId, isPresent);
-            Logger.logInfo("Attendance marked for student: " + studentId + " in classroom: " + className);
+            //Logger.logInfo("Attendance marked for student: " + studentId + " in classroom: " + className);
             //System.out.println("Attendance marked for student " + studentId + " in classroom " + className);
         } else {
             System.out.println("Invalid command. Usage: markattendance <class_name> <student_id>");
@@ -224,15 +283,10 @@ public class Main {
         if (parts.length == 2 && InputValidator.isValidClassName(parts[1])) {
             String className = parts[1];
             classroomManager.listAttendance(className);
-            Logger.logInfo("Listed attendance for class: " + className);
         } else {
             System.out.println("Invalid command. Usage: listattendance <class_name>");
         }
     }
-
-    // private static void handleListAllAssignments(AssignmentManager assignmentManager) {
-    //     assignmentManager.listAllAssignments();
-    // }
 
     private static void handleRemoveStudent(String[] parts, ClassroomManager classroomManager) {
         if (parts.length == 3 && InputValidator.isValidStudentId(parts[1]) 
@@ -240,39 +294,35 @@ public class Main {
             String studentId = parts[1];
             String className = parts[2];
             classroomManager.removeStudent(studentId, className);
-            Logger.logInfo("Removed student: " + studentId + " from classroom: " + className);
+            //Logger.logInfo("Removed student: " + studentId + " from classroom: " + className);
             //System.out.println("Student " + studentId + " has been removed from classroom " + className);
         } else {
             System.out.println("Invalid command. Usage: removestudent <student_id> <class_name>");
         }
     }
 
+
     private static void handleDisplayEnrolledClassrooms(String[] parts, ClassroomManager classroomManager) {
         if (parts.length == 2 && InputValidator.isValidStudentId(parts[1])) {
             String studentId = parts[1];
             classroomManager.displayEnrolledClassrooms(studentId);
-            Logger.logInfo("Displayed enrolled classrooms for student: " + studentId); 
         } else {
             System.out.println("Invalid command. Usage: displayenrolledclassrooms <student_id>");
         }
     }
-    
 
     private static void handleAssignGrade(String[] parts, ClassroomManager classroomManager) {
         if (parts.length == 5 && InputValidator.isValidStudentId(parts[1]) 
-                                   && InputValidator.isValidClassName(parts[2]) 
-                                   && InputValidator.isValidGrade(parts[3]) 
-                                   && InputValidator.isValidAssignmentTitle(parts[4])) {
+                               && InputValidator.isValidClassName(parts[2]) 
+                               && InputValidator.isValidGrade(parts[3]) 
+                               && InputValidator.isValidAssignmentTitle(parts[4])) {
             String studentId = parts[1];
             String className = parts[2];
             String grade = parts[3];
-            String assignmentTitle = parts[4]; // New parameter
+            String assignmentTitle = parts[4];
             classroomManager.assignGrade(studentId, className, grade, assignmentTitle);
-            Logger.logInfo("Assigned grade " + grade + " to student: " + studentId + " in classroom: " + className + " for assignment: " + assignmentTitle);
-            //System.out.println("Grade " + grade + " has been assigned to student " + studentId + " in classroom " + className + " for assignment " + assignmentTitle);
         } else {
             System.out.println("Invalid command. Usage: assigngrade <student_id> <class_name> <grade> <assignment_title>");
         }
     }
-    
 }
